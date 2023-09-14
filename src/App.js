@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class Click extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+        first_color : true
+        }
+    }
+
+    clickColor =()=> {
+        this.setState((prevState)=>({
+            first_color: !prevState.first_color
+        }))
+    }
+    render() {
+        const redSquare = this.state.first_color ? "red" : "blue"
+        const blueSquare = this.state.first_color ? "blue" : "red"
+
+        return(
+            <div>
+                <div className="red" onClick={this.clickColor} style={{backgroundColor: redSquare,}}></div>
+                <div className="blue" onClick={this.clickColor} style={{backgroundColor: blueSquare,}}></div>
+            </div>
+
+        )
+    }
 }
 
-export default App;
+
+export default Click;
